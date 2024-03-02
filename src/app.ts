@@ -4,6 +4,8 @@ import { Signale } from 'signale';
 import { UserRouter } from "./User management/User/infraestructure/Route/UserRouter";
 
 
+
+
 const app = express();
 const signale = new Signale();
 
