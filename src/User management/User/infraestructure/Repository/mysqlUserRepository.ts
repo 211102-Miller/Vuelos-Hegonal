@@ -11,8 +11,6 @@ export class MysqlUserRepository implements UserInterface {
         try {
             const { contact, credential } = user;
 
-            console.log("aaaa")
-
             const sql = "INSERT INTO users (uuid, name, lastName, cellphone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
             const params = [
                 user.uuid,
@@ -25,8 +23,9 @@ export class MysqlUserRepository implements UserInterface {
             await query(sql, params);
             return user;
         } catch (error) {
+            
             console.error("Error al registrar usuario en MySQL:", error);
-            throw new Error("Error al registrar usuario en MySQL");
+            throw new Error("Error al registrar usuario en MySQL")
         }
     }
 
