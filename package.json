@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/app.ts"
-  },
+    "dev": "nodemon src/app.ts",
+    "start": "node dist/app.js",
+    "build": "tsc"
+},
   "keywords": [],
   "author": "Miller Vidal",
   "license": "ISC",
@@ -22,6 +24,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@types/pg": "^8.11.2",
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",

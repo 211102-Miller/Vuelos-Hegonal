@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createReservationsController = exports.createReservationsUseCase = exports.createReservationController = exports.createReservationUseCase = exports.mysqlReservationRepository = void 0;
+const mysqlReservationRepository_1 = require("./Repository/mysqlReservationRepository");
+const createReservationUseCase_1 = require("../application/UseCase/createReservationUseCase");
+const createReservationController_1 = require("./Controller/createReservationController");
+const createReservationsUseCase_1 = require("../application/UseCase/createReservationsUseCase");
+const createReservationsController_1 = require("./Controller/createReservationsController");
+exports.mysqlReservationRepository = new mysqlReservationRepository_1.PostgresReservationRepository();
+exports.createReservationUseCase = new createReservationUseCase_1.CreateReservationUseCase(exports.mysqlReservationRepository);
+exports.createReservationController = new createReservationController_1.CreateReservationController(exports.createReservationUseCase);
+exports.createReservationsUseCase = new createReservationsUseCase_1.CreateReservationsUseCase(exports.mysqlReservationRepository);
+exports.createReservationsController = new createReservationsController_1.CreateReservationsController(exports.createReservationsUseCase);
