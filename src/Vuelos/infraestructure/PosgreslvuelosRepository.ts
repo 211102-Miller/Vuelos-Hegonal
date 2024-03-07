@@ -63,17 +63,16 @@ export class PosgresVuelosRepository implements VuelosRepository {
             return [];
         }
     }
-
     async getById(uuid: string): Promise<Vuelos | null> {
         try {
             const sql = "SELECT * FROM Vuelos WHERE uuid = $1 LIMIT 1";
-            const [rows]: any = await query(sql, [uuid]);
-
+            const result = await query(sql, [uuid]);
+            const rows = result.rows;
+    
             if (!rows || rows.length === 0) return null;
-
+    
             const row = rows[0];
-            return new Vuelos(
-                row.uuid,
+            return new Vuelos(  row.uuid,
                 row.origin,
                 row.destination,
                 row.state,
@@ -82,13 +81,13 @@ export class PosgresVuelosRepository implements VuelosRepository {
                 row.date_end,
                 row.price,
                 row.status,
-                row.avion_uuid
-            );
+                row.avion_uuid);
         } catch (error) {
             console.error(error);
             return null;
         }
     }
+   
 
     async update(uuid: string, status: string): Promise<Vuelos | null> {
         try {

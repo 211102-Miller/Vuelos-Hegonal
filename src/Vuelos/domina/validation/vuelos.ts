@@ -40,7 +40,7 @@ export class ValidatorCreate {
 
     @IsNotEmpty()
     @IsString()
-    @IsIn(['premium', 'básico'])
+    @IsIn(["lleno","en vuelo", "finalizado","abordando"])
     public status: string;
 
     @IsNotEmpty()
@@ -89,9 +89,9 @@ export class ValidatorUpdate {
     public uuid: string;
 
     @IsOptional()
-    @IsNumber()
+    @IsString()
     @Length(1, 100)
-    @IsIn(['premium', 'básico'])
+    @IsIn(["lleno","en vuelo", "finalizado","abordando"])
     public type?: string;
 
 

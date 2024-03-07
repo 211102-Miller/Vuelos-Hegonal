@@ -47,8 +47,9 @@ export class ValidatorId {
     @IsNotEmpty()
     @IsUUID()
     public uuid: string;
-    constructor(uuid:string) {
-        this.uuid = uuid
+
+    constructor(uuid: string) {
+        this.uuid = uuid;
     }
 }
 
@@ -59,7 +60,6 @@ export class ValidatorUpdate {
 
     @IsOptional()
     @IsNumber()
-    @Length(1, 100)
     public capacity?: number;
 
 

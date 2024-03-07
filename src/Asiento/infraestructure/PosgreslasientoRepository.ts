@@ -51,10 +51,11 @@ export class PosgresAsientoRepository implements AsientoRepository {
     async getById(uuid: string): Promise<Asiento | null> {
         try {
             const sql = "SELECT * FROM Asiento WHERE uuid = $1 LIMIT 1";
-            const [rows]: any = await query(sql, [uuid]);
-
+            const result = await query(sql, [uuid]);
+            const rows = result.rows;
+    
             if (!rows || rows.length === 0) return null;
-
+    
             const row = rows[0];
             return new Asiento(row.uuid, row.name, row.type, row.description, row.avion_uuid);
         } catch (error) {
@@ -62,7 +63,6 @@ export class PosgresAsientoRepository implements AsientoRepository {
             return null;
         }
     }
-
     async update(uuid: string, type: string): Promise<Asiento | null> {
         try {
             const sql = "UPDATE Asiento SET type = $1 WHERE uuid = $2";

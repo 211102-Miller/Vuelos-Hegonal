@@ -3,17 +3,18 @@ import { AvionRepository } from "../domina/avionRepository";
 import { validate } from "class-validator";
 import { ValidatorId } from "../domina/validation/avion";
 
-export class DeleteAvionUseCase{
+export class DeleteAvionUseCase {
 
-    constructor(readonly avionRepository: AvionRepository){}
+    constructor(readonly avionRepository: AvionRepository) { }
 
-    async run(uuid:string):Promise<string | null>{
+    async run(uuid: string): Promise<string | null> {
 
         let post = new ValidatorId(uuid)
         const validation = await validate(post)
         console.log(validation.length)
         if (validation.length > 0) {
-            throw new Error(JSON.stringify(validation));
+            console.log("Validation error:", validation);
+            throw new Error("Validation error. See console for details.");
         }
 
         try {

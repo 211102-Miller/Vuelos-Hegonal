@@ -15,7 +15,7 @@ export class GetByIdCoontroller{
                 return res.status(200).send({
                     status:"succes",
                     data:{
-                        user: getByuuid
+                        Asiento: getByuuid
                     }
                 })
             }else{

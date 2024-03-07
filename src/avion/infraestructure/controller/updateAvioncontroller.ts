@@ -9,11 +9,11 @@ export class UpdateAvionIdController{
             let { uuid } = req.params;
 
             let {
-                airline,
+                capacity,
               
             } = req.body
         
-            let UpdateUserById = await this.updateAvionByIdUseCase.update(uuid,airline)
+            let UpdateUserById = await this.updateAvionByIdUseCase.update(uuid,capacity)
 
             if(UpdateUserById){
                 return res.status(200).send({
