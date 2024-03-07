@@ -1,6 +1,6 @@
 import { Asiento } from "../domina/asiento";
 import { AsientoRepository } from "../domina/asientoRepository";
-import { query } from "../../database/mysql";
+import { query } from "../../../database/postgresql";
 
 export class PosgresAsientoRepository implements AsientoRepository {
     

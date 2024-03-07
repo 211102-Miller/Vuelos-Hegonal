@@ -1,6 +1,6 @@
 import { Vuelos } from "../domina/vuelos";
 import { VuelosRepository } from "../domina/vuelosRepository";
-import { query } from "../../database/mysql";
+import { query } from "../../../database/postgresql";
 
 export class PosgresVuelosRepository implements VuelosRepository {
     

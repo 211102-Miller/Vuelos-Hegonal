@@ -1,6 +1,6 @@
 import { Avion } from "../domina/avion";
 import { AvionRepository } from "../domina/avionRepository";
-import { query } from "../../database/mysql";
+import { query } from "../../../database/postgresql";
 
 export class PosgresAvionRepository implements AvionRepository {
     
