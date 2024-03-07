@@ -1,32 +1,33 @@
-import mysql from "mysql2/promise";
+import { Pool } from "pg";
 import { Signale } from "signale";
 
 const signale = new Signale();
 
-
 const config = {
+    user: 'angelito',
     host: 'localhost',
-    port: 3306,
-    user: 'root',
-    database: 'vuelos',
-    password: 'Miller2001',
-    waitForConnections: true,
-    connectionLimit: 10,
+    database: 'matenimientoC2',
+    password: '211125',
+    port: 5432, // Puerto predeterminado de PostgreSQL
+    max: 10, // Número máximo de conexiones en el pool
 };
 
-
 // Crear el pool de conexiones
-const pool = mysql.createPool(config);
+const pool = new Pool(config);
 
 export async function query(sql: string, params?: any[]) {
     try {
-        const conn = await pool.getConnection();
+        const client = await pool.connect();
         signale.success("Conexión exitosa a la BD");
-        const result = await conn.execute(sql, params);
-        conn.release();
+
+        // Utiliza el método query del cliente para ejecutar consultas
+        const result = await client.query(sql, params);
+
+        // Libera el cliente de vuelta al pool
+        client.release();
+
         return result;
     } catch (error) {
-        console.log(process.env.DB_HOST); 
         signale.error(error);
         return null;
     }
